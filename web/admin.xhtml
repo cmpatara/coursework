@@ -1,0 +1,40 @@
+<ui:composition template="template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">
+        Admin
+    </ui:define>
+
+    <ui:define name="content">
+        <h:panelGrid columns="7" cellpadding="5">  
+            <h:outputText value="Email" class="tbl-headers"/>
+            <h:outputText value="Password" class="tbl-headers"/>
+            <h:outputText value="First Name" class="tbl-headers"/>
+            <h:outputText value="Last Name" class="tbl-headers"/>
+            <h:outputText value="Phone" class="tbl-headers"/>
+            <h:outputText value="" />
+            <h:outputText value="" />
+
+            <c:forEach items="#{adminBean.users()}" var="useradmin" varStatus="loop">
+
+                <h:outputText value="${useradmin.email}" />
+                <h:outputText value="${useradmin.pswrd}" />
+                <h:outputText value="${useradmin.fname}" />
+                <h:outputText value="${useradmin.lname}" />
+                <h:outputText value="${useradmin.phone == null ? 'not specified' : useradmin.phone}" />
+                <h:form>
+                    <h:commandLink value="Edit" action="#{adminBean.edit(useradmin.email)}" />
+                </h:form>
+                <h:form>
+                    <h:commandLink value="Delete" action="#{adminBean.delete(useradmin.email)}" />
+                </h:form>
+            </c:forEach>
+        </h:panelGrid>
+<!--        <h:form>
+            <h:link value="Add User" outcome="addUser" />
+        </h:form>-->
+    </ui:define>
+
+</ui:composition>

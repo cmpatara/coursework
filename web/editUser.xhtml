@@ -1,0 +1,38 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">Edit User</ui:define>
+
+    <ui:define name="content">
+        
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">  
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" required="true" value="#{adminBean.editedUser.email}"
+                             requiredMessage="Email is requied!"/>
+
+                <h:outputLabel for="password" value="Password:" />
+                <h:inputSecret  id="password" required="true" value="#{adminBean.editedUser.pswrd}"
+                                requiredMessage="Password is requied!" />
+                
+                <h:outputLabel for="fname" value="First name:" />
+                <h:inputText  id="fname" required="true" value="#{adminBean.editedUser.fname}"
+                                requiredMessage="First name is requied!"/>
+                
+                <h:outputLabel for="lname" value="Last name:" />
+                <h:inputText  id="lname" required="true" value="#{adminBean.editedUser.lname}"
+                                requiredMessage="Last name is requied!" />
+                
+                <h:outputLabel for="phone" value="Phone:" />
+                <h:inputText  id="phone" value="#{adminBean.editedUser.phone}" />
+
+                <h:commandButton value="Edit" action="#{adminBean.edit()}" />
+
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

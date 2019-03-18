@@ -1,0 +1,39 @@
+<ui:composition template="template.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">User</ui:define>
+
+    <ui:define name="content">
+        <h:panelGrid columns="5" cellpadding="5">  
+            <h:outputText value="ID" class="tbl-headers"/>
+            <h:outputText value="Details" class="tbl-headers"/>
+            <h:outputText value="Date" class="tbl-headers"/>
+            <h:outputText value="Document" class="tbl-headers"/>
+            <h:outputText value="" />
+
+            <c:forEach items="#{userBean.assignments()}" var="assign">
+
+                <h:outputText value="${assign.id}" />
+                <h:outputText value="${assign.details}" />
+                <h:outputText value="${assign.date}" >
+                </h:outputText>
+                <h:form>
+                    <h:commandLink value="${assign.documentName}" action="#{userBean.download(assign)}">
+                    </h:commandLink>
+                </h:form>
+                <h:form>
+                    <h:commandLink value="Delete" action="#{userBean.delete(assign)}" />
+                </h:form>
+            </c:forEach>
+        </h:panelGrid>
+        <h:form>
+            <h:link value="Add Assignment" outcome="addAssignment" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>

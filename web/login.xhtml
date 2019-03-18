@@ -1,0 +1,31 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="title">
+        Login
+    </ui:define>
+    
+    <ui:define name="top">
+        <h:link value="Home" outcome="index" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">  
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" binding="#{email}" required="true" 
+                             requiredMessage="Email is requied!"/>
+
+                <h:outputLabel for="password" value="Password:" />
+                <h:inputSecret  id="password" binding="#{pswrd}" required="true" 
+                                requiredMessage="Password is requied!"/>
+
+                <h:commandButton value="Login" action="#{loginBean.login(email.value, pswrd.value)}" />
+
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

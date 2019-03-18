@@ -1,0 +1,27 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h:form enctype="multipart/form-data"> <!-- Pay attention, here we use specific enctype for h:form 
+            to allow uploading files -->
+            <h:panelGrid columns="2" cellpadding="5">  
+                <h:outputLabel for="details" value="Details:" />
+                <h:inputText id="details" required="true" value="#{userBean.assignment.details}"
+                             requiredMessage="Assignment details is requied!"/>
+
+                <h:outputLabel for="document" value="Upload document:" />
+                <h:inputFile  id="document" required="true" value="#{userBean.assignment.part}"
+                                requiredMessage="Document is requied!"/>
+ 
+
+                <h:commandButton value="Create" action="#{userBean.add()}" />
+
+            </h:panelGrid>
+            
+        </h:form>
+    </ui:define>
+
+
+</ui:composition>
